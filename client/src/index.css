@@ -1,0 +1,651 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@200;300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Hide scrollbar for Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* Alternative method for all browsers */
+body {
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Webkit browsers */
+}
+
+/* Custom Spacing Utilities */
+.luxury-section {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.luxury-gap-small {
+  gap: 1rem !important;
+}
+
+.luxury-gap-medium {
+  gap: 1.5rem !important;
+}
+
+.luxury-padding-reduced {
+  padding: 1rem !important;
+}
+
+/* React Day Picker Styles */
+.rdp {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: hsl(142, 76%, 36%); /* green for available dates */
+  --rdp-background-color: hsl(142, 76%, 95%); /* light green background */
+  --rdp-accent-color-dark: hsl(142, 76%, 26%); /* darker green */
+  --rdp-background-color-dark: hsl(142, 76%, 95%);
+  --rdp-outline: 2px solid var(--rdp-accent-color);
+  --rdp-outline-selected: 3px solid var(--rdp-accent-color);
+  --rdp-background-color-selected: var(--rdp-accent-color);
+  
+  margin: 0;
+  font-family: inherit;
+}
+
+.rdp-day_selected {
+  background-color: var(--rdp-accent-color) !important;
+  color: white !important;
+}
+
+.rdp-day_today {
+  border: 2px solid hsl(38, 61%, 73%); /* gold border for today */
+  background-color: hsl(142, 76%, 90%) !important; /* light green for today */
+}
+
+.rdp-day:hover:not(.rdp-day_selected):not(.rdp-day_disabled):not(.rdp-day_booked) {
+  background-color: hsl(142, 76%, 85%) !important; /* green hover for available dates */
+}
+
+/* Premium Calendar Styles */
+.luxury-calendar .rdp-day {
+  @apply w-10 h-10 rounded-lg border-0 text-sm font-medium transition-all duration-300;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  color: hsl(var(--luxury-bronze));
+  border: 2px solid transparent !important;
+}
+
+.luxury-calendar .rdp-day:hover:not(.rdp-day_selected):not(.rdp-day_disabled):not(.rdp-day_booked) {
+  background: linear-gradient(135deg, hsl(var(--luxury-gold)) 0%, hsl(var(--luxury-dark-gold)) 100%) !important;
+  color: white !important;
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
+}
+
+.luxury-calendar .rdp-day_selected {
+  background: linear-gradient(135deg, hsl(var(--luxury-gold)) 0%, hsl(var(--luxury-dark-gold)) 100%) !important;
+  color: white !important;
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+}
+
+/* Available dates styling - Green theme */
+.rdp-day:not(.rdp-day_disabled):not(.rdp-day_booked) {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
+  color: #166534 !important;
+  border: 1px solid #22c55e !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.rdp-day:hover:not(.rdp-day_selected):not(.rdp-day_disabled):not(.rdp-day_booked) {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
+  color: white !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+/* Booked dates styling */
+.rdp-day_booked {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: white !important;
+  border: 1px solid #dc2626 !important;
+  border-radius: 8px;
+  cursor: not-allowed;
+}
+
+.rdp-day_booked:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+  transform: none;
+}
+
+
+
+.rdp-button:focus-visible {
+  outline: var(--rdp-outline);
+}
+
+.rdp-months {
+  display: flex;
+}
+
+.rdp-month {
+  margin: 0;
+}
+
+.rdp-table {
+  margin: 0;
+  max-width: none;
+}
+
+.rdp-with_weeknumber .rdp-table {
+  max-width: none;
+}
+
+.rdp-head_cell {
+  vertical-align: middle;
+  text-align: center;
+  height: 40px;
+  padding: 0;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: hsl(28, 84%, 30%); /* luxury-bronze */
+}
+
+.rdp-row {
+  border: none;
+}
+
+/* Calendly Widget Styling */
+.calendly-inline-widget {
+  border-radius: 12px !important;
+  border: 1px solid hsl(38, 61%, 73%) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.calendly-inline-widget iframe {
+  border-radius: 12px !important;
+}
+
+:root {
+  --background: 43 36% 95%; /* Warm cream background */
+  --foreground: 32 20% 15%; /* Dark brown text */
+  --muted: 38 25% 85%;
+  --muted-foreground: 32 15% 45%;
+  --popover: 43 36% 95%;
+  --popover-foreground: 32 20% 15%;
+  --card: 43 36% 95%;
+  --card-foreground: 32 20% 15%;
+  --border: 38 25% 80%;
+  --input: 38 25% 80%;
+  --primary: 38 45% 65%; /* Warm gold */
+  --primary-foreground: 32 20% 15%;
+  --secondary: 38 25% 85%;
+  --secondary-foreground: 32 20% 15%;
+  --accent: 38 45% 65%;
+  --accent-foreground: 32 20% 15%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 43 36% 95%;
+  --ring: 38 45% 65%;
+  --radius: 0.75rem;
+  
+  /* Custom luxury colors */
+  --luxury-cream: 43 38% 96%;
+  --luxury-beige: 38 28% 87%;
+  --luxury-gold: 38 55% 68%;
+  --luxury-dark-gold: 38 65% 58%;
+  --luxury-bronze: 30 40% 45%;
+  --luxury-brown: 32 25% 12%;
+  --luxury-light-brown: 32 18% 42%;
+  --luxury-white: 0 0% 100%;
+  --luxury-pearl: 43 15% 92%;
+  --luxury-champagne: 45 35% 85%;
+}
+
+.dark {
+  --background: 32 20% 15%;
+  --foreground: 43 36% 95%;
+  --muted: 32 15% 25%;
+  --muted-foreground: 38 25% 75%;
+  --popover: 32 20% 15%;
+  --popover-foreground: 43 36% 95%;
+  --card: 32 20% 15%;
+  --card-foreground: 43 36% 95%;
+  --border: 32 15% 25%;
+  --input: 32 15% 25%;
+  --primary: 38 45% 65%;
+  --primary-foreground: 32 20% 15%;
+  --secondary: 32 15% 25%;
+  --secondary-foreground: 43 36% 95%;
+  --accent: 38 45% 65%;
+  --accent-foreground: 32 20% 15%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 43 36% 95%;
+  --ring: 38 45% 65%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, hsl(var(--luxury-cream)) 0%, hsl(var(--luxury-pearl)) 50%, hsl(var(--luxury-champagne)) 100%);
+    min-height: 100vh;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: hsl(var(--luxury-brown));
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  
+  h1 {
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+  
+  .luxury-serif {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Text wrapping and overflow prevention for policy pages */
+  .break-words {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  .overflow-wrap-anywhere {
+    overflow-wrap: anywhere;
+  }
+
+  /* Enhanced prose styling for mobile */
+  .prose h2 {
+    @apply break-words leading-tight;
+  }
+
+  .prose h3 {
+    @apply break-words leading-tight;
+  }
+
+  .prose p {
+    @apply break-words leading-relaxed;
+  }
+
+  .prose ul {
+    @apply break-words;
+  }
+
+  .prose li {
+    @apply break-words;
+  }
+
+  /* Ensure content stays within bounds */
+  .overflow-hidden {
+    overflow-x: hidden;
+  }
+
+  /* Mobile-specific improvements */
+  @media (max-width: 640px) {
+    .prose {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    
+    .prose h1 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    .prose h2 {
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+    
+    .prose h3 {
+      font-size: 1.125rem;
+      line-height: 1.4;
+    }
+  }
+}
+
+@layer components {
+  .luxury-button {
+    @apply px-10 py-4 rounded-full font-bold transition-all duration-500 hover:shadow-2xl;
+    background: linear-gradient(135deg, hsl(var(--luxury-gold)) 0%, hsl(var(--luxury-dark-gold)) 100%);
+    color: #000000;
+    border: 2px solid transparent;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+  
+  .luxury-button:hover {
+    background: linear-gradient(135deg, hsl(var(--luxury-brown)) 0%, hsl(var(--luxury-bronze)) 100%);
+    color: hsl(var(--luxury-cream));
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  }
+  
+  .luxury-card {
+    @apply rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+    border: 1px solid hsl(var(--luxury-gold) / 0.2);
+    backdrop-filter: blur(20px);
+  }
+  
+  .luxury-card:hover {
+    transform: translateY(-8px);
+    border-color: hsl(var(--luxury-gold) / 0.4);
+  }
+  
+  .luxury-text {
+    color: hsl(var(--luxury-light-brown));
+    line-height: 1.7;
+  }
+  
+  .luxury-accent {
+    background: linear-gradient(135deg, hsl(var(--luxury-gold)) 0%, hsl(var(--luxury-dark-gold)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .luxury-bg {
+    background: linear-gradient(135deg, hsl(var(--luxury-cream)) 0%, hsl(var(--luxury-pearl)) 50%, hsl(var(--luxury-champagne)) 100%);
+  }
+  
+  .luxury-nav {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid hsl(var(--luxury-gold) / 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .luxury-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  
+  .luxury-subheading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  
+  .luxury-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .luxury-shadow {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .luxury-shadow-sm {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Enhanced Calendar Styles */
+  .luxury-calendar .rdp-caption {
+    @apply mb-6;
+  }
+
+  .luxury-calendar .rdp-caption_label {
+    @apply text-xl font-bold text-luxury-brown luxury-serif text-center;
+  }
+
+  .luxury-calendar .rdp-nav {
+    @apply flex items-center justify-between mb-4 relative;
+  }
+
+  .luxury-calendar .rdp-nav_button {
+    @apply w-10 h-10 rounded-xl hover:bg-luxury-gold hover:text-white transition-all duration-300 flex items-center justify-center;
+    background-color: hsl(var(--luxury-gold) / 0.1);
+  }
+
+  .luxury-calendar .rdp-nav_button[name="previous-month"] {
+    @apply absolute left-0;
+  }
+
+  .luxury-calendar .rdp-nav_button[name="next-month"] {
+    @apply absolute right-0;
+  }
+
+  .luxury-calendar .rdp-head_cell {
+    @apply text-sm font-semibold text-luxury-bronze uppercase tracking-wider py-3;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .luxury-calendar .rdp-table {
+    @apply w-full table-fixed;
+    border-spacing: 2px;
+  }
+
+  .luxury-calendar .rdp-head_cell,
+  .luxury-calendar .rdp-cell {
+    width: 14.28%; /* 100% / 7 days */
+    text-align: center;
+  }
+
+  .luxury-calendar .rdp-day {
+    @apply w-full h-9 rounded-lg text-sm font-medium mx-auto;
+    min-width: 36px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Responsive calendar sizing */
+  @media (max-width: 480px) {
+    .luxury-calendar .rdp-day {
+      @apply h-8 text-xs;
+      min-width: 28px;
+    }
+    
+    .luxury-calendar .rdp-table {
+      border-spacing: 1px;
+    }
+    
+    .luxury-calendar .rdp-head_cell {
+      @apply text-xs py-2;
+    }
+  }
+}
+
+/* Enhanced image quality settings */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.property-image {
+  image-rendering: -webkit-optimize-contrast;
+  filter: contrast(1.05) saturate(1.1) brightness(1.02);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.property-image:hover {
+  filter: contrast(1.08) saturate(1.15) brightness(1.05);
+}
+
+/* Mobile responsive improvements for calendar */
+@media (max-width: 640px) {
+  .luxury-calendar {
+    font-size: 0.875rem;
+  }
+  
+  .luxury-calendar .rdp-table {
+    width: 100%;
+  }
+  
+  .luxury-calendar .rdp-day {
+    width: 2rem !important;
+    height: 2rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .luxury-calendar .rdp-caption_label {
+    font-size: 1rem !important;
+  }
+  
+  .luxury-calendar .rdp-nav_button {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+}
+
+/* Mobile responsive improvements for navigation */
+@media (max-width: 768px) {
+  .property-card {
+    margin-bottom: 1rem;
+  }
+  
+  .luxury-card {
+    border-radius: 1rem;
+  }
+}
+
+@layer utilities {
+  .text-luxury-cream { color: hsl(var(--luxury-cream)); }
+  .text-luxury-beige { color: hsl(var(--luxury-beige)); }
+  .text-luxury-gold { color: hsl(var(--luxury-gold)); }
+  .text-luxury-dark-gold { color: hsl(var(--luxury-dark-gold)); }
+  .text-luxury-bronze { color: hsl(var(--luxury-bronze)); }
+  .text-luxury-brown { color: hsl(var(--luxury-brown)); }
+  .text-luxury-light-brown { color: hsl(var(--luxury-light-brown)); }
+  .text-luxury-white { color: hsl(var(--luxury-white)); }
+  .text-luxury-pearl { color: hsl(var(--luxury-pearl)); }
+  .text-luxury-champagne { color: hsl(var(--luxury-champagne)); }
+  
+  .bg-luxury-cream { background-color: hsl(var(--luxury-cream)); }
+  .bg-luxury-beige { background-color: hsl(var(--luxury-beige)); }
+  .bg-luxury-gold { background-color: hsl(var(--luxury-gold)); }
+  .bg-luxury-dark-gold { background-color: hsl(var(--luxury-dark-gold)); }
+  .bg-luxury-bronze { background-color: hsl(var(--luxury-bronze)); }
+  .bg-luxury-brown { background-color: hsl(var(--luxury-brown)); }
+  .bg-luxury-light-brown { background-color: hsl(var(--luxury-light-brown)); }
+  .bg-luxury-white { background-color: hsl(var(--luxury-white)); }
+  .bg-luxury-pearl { background-color: hsl(var(--luxury-pearl)); }
+  .bg-luxury-champagne { background-color: hsl(var(--luxury-champagne)); }
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes luxury-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-luxury-float {
+  animation: luxury-float 6s ease-in-out infinite;
+}
+
+/* Property card hover effects */
+.property-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.property-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px -12px rgba(38, 38, 38, 0.25);
+}
+
+/* Hero section styling */
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(38, 38, 38, 0.3) 0%,
+    rgba(38, 38, 38, 0.1) 50%,
+    rgba(38, 38, 38, 0.3) 100%
+  );
+}
+
+/* Navigation styling */
+.nav-backdrop {
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid hsl(var(--luxury-beige));
+}
+
+/* Luxury typography */
+.luxury-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.luxury-subheading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+}
+
+.luxury-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Elegant section spacing */
+.luxury-section {
+  padding: 6rem 0;
+}
+
+/* Smooth scrolling */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Glass morphism effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
